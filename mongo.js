@@ -25,15 +25,15 @@ const person = new Person({
   number: process.argv[4]
 })
 if(process.argv.length ===3){
-    Person.find({}).then(result =>{
-        console.log('phonebook:'),
-        result.map(p=> console.log(`${p.name} ${p.number}`))
-        
-        mongoose.connection.close()
-    })
+  Person.find({}).then(result => {
+    console.log('phonebook:'),
+    result.map(p => console.log(`${p.name} ${p.number}`))
+
+    mongoose.connection.close()
+  })
 } else {
-    person.save().then(result => {
-      console.log(`added ${person.name} number ${person.number} to phonebook`)
-      mongoose.connection.close()
-    })
+  person.save().then(() => {
+    console.log(`added ${person.name} number ${person.number} to phonebook`)
+    mongoose.connection.close()
+  })
 }
